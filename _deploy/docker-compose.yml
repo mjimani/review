@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  review_api:
+    image: review_api_image
+    container_name: review_api
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongoDb
+    environment:
+      - MONGODB_URI=mongodb://mongodb_review:27017/review
+  mongoDb:
+    image: mongo:4.4
+    container_name: mongodb_review
+    restart: always
+    ports:
+      - 27017:27017
